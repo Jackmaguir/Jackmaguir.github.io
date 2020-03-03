@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+	<title>
+		what to do
+	</title>
+
+	<style type="text/css">
+
+		#question {
+		font-family: Comic Sans MS;
+		font-size: 20px;
+		left:40%;
+		position: absolute;
+		}
+
+		#button {
+		background-color: crimson;
+		border-radius: 50%;
+		height:100px;
+		width:100px;
+		top: 70%;
+		position: absolute;
+		left:46%;
+		box-shadow: 5px 10px #888888;
+		}
+
+		#stuff {
+		width: 200px;
+		height: 50px;
+		font-family: Comic Sans MS;
+		border:1px solid black;
+		top: 55%;
+		position: absolute;
+		left: 42%;
+
+		}
+
+
+	</style>
+
+</head>
+<body>
+
+	<div id="question">
+		<p>
+			What should I do today?
+		</p>
+	</div>
+
+	<div id="stuff"></div>
+
+	<div id="button"></div>
+
+	<div id="pics"></div>
+
+	<script type="text/javascript">
+
+		var pics = []
+
+		var things = ["Central Park", "Battery Park", "Belvedere Castle", "Bike Ride", "Go For A Run", "Staten Island Ferry", "Go Skating", "Rockafeller Center", "High Line", "Union Square Farmers' Market", "Washington Square Arch", "Urban Garden Center", "Walk Across the Brookyln Bridge", "Madison Square and Flatiron", "Brooklyn Botanic Garden", "Bronx Botanical Garden", "Harlem Meer", "Roosevelt Island and Funicular", "See a Movie", "See a Baseball Game", "Watch the Sunset from Riverside Park", "Grand Central and Oyster Bar", "Conservatory Garden", "Go to 'The Edge'(Observation Deck", "The Cloisters", "Shakespeare in the Park", "Coney Island", "Go Rowing in the Park", "Brooklyn Promenade", "Governor's Island", "Chelsea Market", "IPIC Theaters (Dinner w/movie)", "Go for a Picnic", "Boating on the Hudson", "World Trade Center", "Top of the Rock", "Rob a Bank"]
+		
+		var button = document.getElementById('button');
+
+		var request = new XMLHttpRequest();
+
+		button.addEventListener("mousedown", function press() {
+
+					var x = Math.round(Math.random()*23);
+
+			button.style.boxShadow = "2.5px 5px"
+			button.style.top = "70.3%";
+			button.style.left = "46.1%";
+			stuff.innerText = things[x];
+			request.open('GET', proxyURL + 'https://serpapi.com/search?q=' + things[x] + '&tbm=isch&ijn=0', true);
+			request.onload = function() {
+				console.log(request.imagesResults);
+			}
+
+			request.send();
+		})
+
+		var button = document.getElementById('button');
+		button.addEventListener("mouseup", function press() {
+			button.style.boxShadow = "5px 10px #888888"
+			button.style.top = "70%";
+			button.style.left = "46%";
+		})
+
+	</script>
+
+</body>
+</html>
